@@ -11,7 +11,7 @@ namespace Catalog.API.Products.CreateProduct
         ,decimal Price):ICommand<CreateProdcutResult>;
 
     public record CreateProdcutResult(Guid Id);
-    internal class CreateProductCommandHandler : ICommandHandler<CreateProductCommand, CreateProdcutResult>
+    internal class CreateProductCommandHandler (IDocumentSession session) : ICommandHandler<CreateProductCommand, CreateProdcutResult>
     {
         public async Task<CreateProdcutResult> Handle(CreateProductCommand command, CancellationToken cancellationToken)
         {
@@ -24,13 +24,14 @@ namespace Catalog.API.Products.CreateProduct
                 ImageFile = command.ImageFile,
                 Price = command.Price
             };
-            //TODO
+            
             //save to database
 
-
+            session.Store(product);
+            await session.SaveChangesAsync(cancellationToken);
 
             //return the result
-            return new CreateProdcutResult (Guid.NewGuid());
+            return new CreateProdcutResult (product.Id);
 
         }
     }

@@ -18,9 +18,9 @@
 
                 var result = await sender.Send(command);
 
-                var response = request.Adapt<CreateProductResponse>();
+                var response = result.Adapt<CreateProductResponse>();
 
-                return Results.Created($"/products/{response.Id}", request);
+                return Results.Created($"/products/{response.Id}", response);
             })
             .WithName("CreateProduct")
             .Produces<CreateProductResponse>(StatusCodes.Status201Created)
