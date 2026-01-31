@@ -13,7 +13,7 @@ services:
       - postgres_catalog:/var/lib/postgresql
 
 
-  catalogapi:
+  catalog.api:
     build:
       context: ./Services/Catalog/Catalog.API
       dockerfile: Dockerfile

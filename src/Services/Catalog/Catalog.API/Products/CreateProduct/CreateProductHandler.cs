@@ -4,11 +4,11 @@ using Catalog.API.Models;
 
 namespace Catalog.API.Products.CreateProduct
 {
-    public record CreateProductCommand(string Name
-        ,List<string> Catagory
-        ,string Description
-        ,string ImageFile
-        ,decimal Price):ICommand<CreateProdcutResult>;
+    public record CreateProductCommand(string Name,
+        List<string> Catagory,
+        string Description,
+        string ImageFile,
+        decimal Price):ICommand<CreateProdcutResult>;
 
     public record CreateProdcutResult(Guid Id);
     internal class CreateProductCommandHandler (IDocumentSession session) : ICommandHandler<CreateProductCommand, CreateProdcutResult>
