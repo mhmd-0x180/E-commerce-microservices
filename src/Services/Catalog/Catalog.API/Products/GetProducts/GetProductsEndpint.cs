@@ -3,9 +3,9 @@ using Catalog.API.Products.CreateProduct;
 
 namespace Catalog.API.Products.GetProduts
 {
-    public record GetProductRequest();
+    //public record GetProductRequest();
     public record GetProductResponse(IEnumerable<Product> Products);
-    public class GetProductsEndpint :ICarterModule
+    public class GetProductByIdEndpint :ICarterModule
     {
         public void AddRoutes(IEndpointRouteBuilder app)
         {
