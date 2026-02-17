@@ -20,7 +20,7 @@ namespace Catalog.API.Products.GetProductByCatagory
                 return Results.Ok(response);
             })
             .WithName("GetProductByCatagory")
-            .Produces<CreateProductResponse>(StatusCodes.Status200OK)
+            .Produces<GetProductByCatagoryResponse>(StatusCodes.Status200OK)
             .ProducesProblem(StatusCodes.Status400BadRequest)
             .WithSummary("Get Product By Catagory")
             .WithDescription("Get Product By Catagory");
